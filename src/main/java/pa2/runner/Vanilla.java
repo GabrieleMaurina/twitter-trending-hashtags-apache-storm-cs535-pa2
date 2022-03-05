@@ -1,20 +1,19 @@
 package pa2.runner;
 
 import pa2.counter.ICounter;
-import pa2.twitter.T4J;
+import pa2.twitter.Twitter;
 import pa2.util.Time;
 
 public abstract class Vanilla extends Runner {
 
 	protected ICounter counter;
-	protected T4J t4j;
+	protected Twitter twitter;
 
 	@Override
 	public void run() {
+		twitter.start();
 		while (true) {
-			t4j.start();
 			Time.sleep(DELAY);
-			t4j.stop();
 			logTopHashtags(counter.getTop());
 			counter.reset();
 		}

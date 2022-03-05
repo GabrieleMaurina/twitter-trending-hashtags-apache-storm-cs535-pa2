@@ -9,22 +9,22 @@ import org.javatuples.Pair;
 
 public class LossyCounter implements ICounter {
 
-	private int w;
+	private static final int W = 100;
+
 	private int n;
 	private Map<String, Pair<Integer, Integer>> d;
 
-	public LossyCounter(int w) {
-		this.w = w;
+	public LossyCounter() {
 		d = new HashMap<String, Pair<Integer, Integer>>();
 		reset();
 	}
 
 	public int getW() {
-		return w;
+		return W;
 	}
 
 	public int getB() {
-		return (int) Math.ceil((double) n / w);
+		return (int) Math.ceil((double) n / W);
 	}
 
 	public int getN() {
@@ -40,13 +40,14 @@ public class LossyCounter implements ICounter {
 	}
 
 	private void purge() {
-		if (n % w == 0) {
+		if (n % W == 0) {
 			d.values().removeIf(v -> v.getValue0() + v.getValue1() <= getB());
 		}
 	}
 
 	@Override
 	public List<String> getTop() {
+		System.out.println(d.size());
 		return d.entrySet().stream().sorted((e1, e2) -> e2.getValue().getValue0().compareTo(e1.getValue().getValue0()))
 				.limit(SIZE).map(e -> e.getKey()).collect(Collectors.toList());
 	}

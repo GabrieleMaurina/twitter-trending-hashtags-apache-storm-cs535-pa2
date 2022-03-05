@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class LosslessCounter implements ICounter {
 
 	private Map<String, Integer> count;
-	
+
 	public LosslessCounter() {
 		count = new HashMap<String, Integer>();
 	}

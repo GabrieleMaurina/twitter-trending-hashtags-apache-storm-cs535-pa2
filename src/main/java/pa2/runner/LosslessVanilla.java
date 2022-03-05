@@ -1,12 +1,12 @@
 package pa2.runner;
 
 import pa2.counter.LosslessCounter;
-import pa2.twitter.T4J;
+import pa2.twitter.Twitter;
 
 public class LosslessVanilla extends Vanilla {
 
 	public LosslessVanilla() {
 		counter = new LosslessCounter();
-		t4j = new T4J(counter::push);
+		twitter = new Twitter(counter::push);
 	}
 }

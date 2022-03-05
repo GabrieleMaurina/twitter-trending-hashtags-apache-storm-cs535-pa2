@@ -10,7 +10,6 @@ public abstract class Runner {
 
 	private static final String HASHTAGS_LOG_FILE = "hashtags_log.txt";
 	protected static final long DELAY = 10000;
-	protected static final int W = 10000;
 
 	public abstract void run();
 
