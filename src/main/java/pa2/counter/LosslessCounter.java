@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import org.javatuples.Triplet;
 
-public class Counter implements ICounter {
+public class LosslessCounter implements ICounter {
 
 	private Map<String, Integer> count;
 
@@ -16,8 +16,8 @@ public class Counter implements ICounter {
 	}
 
 	@Override
-	public List<Triplet<String, Integer, Integer>> getSorted() {
-		return count.entrySet().stream().sorted((e1, e2) -> e1.getValue().compareTo(e2.getValue()))
+	public List<Triplet<String, Integer, Integer>> getTop() {
+		return count.entrySet().stream().sorted((e1, e2) -> e1.getValue().compareTo(e2.getValue())).limit(SIZE)
 				.map(e -> new Triplet<String, Integer, Integer>(e.getKey(), e.getValue(), 0))
 				.collect(Collectors.toList());
 	}

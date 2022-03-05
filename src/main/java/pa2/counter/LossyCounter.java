@@ -45,9 +45,9 @@ public class LossyCounter implements ICounter {
 	}
 
 	@Override
-	public List<Triplet<String, Integer, Integer>> getSorted() {
+	public List<Triplet<String, Integer, Integer>> getTop() {
 		return d.entrySet().stream().sorted((e1, e2) -> e1.getValue().getValue0().compareTo(e2.getValue().getValue0()))
-				.map(e -> new Triplet<String, Integer, Integer>(e.getKey(), e.getValue().getValue0(),
+				.limit(SIZE).map(e -> new Triplet<String, Integer, Integer>(e.getKey(), e.getValue().getValue0(),
 						e.getValue().getValue1()))
 				.collect(Collectors.toList());
 	}
