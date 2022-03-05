@@ -11,9 +11,7 @@ public class T4J {
 	private TwitterStream twitterStream;
 
 	public T4J(Consumer<String> hashtagCallback) {
-
 		twitterStream = new TwitterStreamFactory().getInstance();
-
 		twitterStream.onStatus(status -> {
 			for (HashtagEntity hashtagEntity : status.getHashtagEntities()) {
 				hashtagCallback.accept(hashtagEntity.getText().toLowerCase());
