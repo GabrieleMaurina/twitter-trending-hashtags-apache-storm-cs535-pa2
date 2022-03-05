@@ -10,7 +10,7 @@ public interface ICounter {
 
 	public void push(String s);
 
-	public List<Triplet<String, Integer, Integer>> getTop();
+	public List<String> getTop();
 
 	public void reset();
 }

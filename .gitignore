@@ -3,3 +3,4 @@
 .settings
 /target/
 twitter4j.properties
+hashtags_log.txt

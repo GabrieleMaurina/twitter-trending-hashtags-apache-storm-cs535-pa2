@@ -7,11 +7,7 @@ import pa2.util.Time;
 public abstract class Vanilla extends Runner {
 
 	protected ICounter counter;
-	private T4J t4j;
-
-	public Vanilla() {
-		t4j = new T4J(counter::push);
-	}
+	protected T4J t4j;
 
 	@Override
 	public void run() {
@@ -19,7 +15,7 @@ public abstract class Vanilla extends Runner {
 			t4j.start();
 			Time.sleep(DELAY);
 			t4j.stop();
-			printTop(counter.getTop());
+			logTopHashtags(counter.getTop());
 			counter.reset();
 		}
 	}

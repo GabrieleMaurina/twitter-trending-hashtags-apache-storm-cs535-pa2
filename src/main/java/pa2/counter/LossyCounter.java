@@ -1,11 +1,11 @@
 package pa2.counter;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.javatuples.Pair;
-import org.javatuples.Triplet;
 
 public class LossyCounter implements ICounter {
 
@@ -15,6 +15,7 @@ public class LossyCounter implements ICounter {
 
 	public LossyCounter(int w) {
 		this.w = w;
+		d = new HashMap<String, Pair<Integer, Integer>>();
 		reset();
 	}
 
@@ -45,11 +46,9 @@ public class LossyCounter implements ICounter {
 	}
 
 	@Override
-	public List<Triplet<String, Integer, Integer>> getTop() {
-		return d.entrySet().stream().sorted((e1, e2) -> e1.getValue().getValue0().compareTo(e2.getValue().getValue0()))
-				.limit(SIZE).map(e -> new Triplet<String, Integer, Integer>(e.getKey(), e.getValue().getValue0(),
-						e.getValue().getValue1()))
-				.collect(Collectors.toList());
+	public List<String> getTop() {
+		return d.entrySet().stream().sorted((e1, e2) -> e2.getValue().getValue0().compareTo(e1.getValue().getValue0()))
+				.limit(SIZE).map(e -> e.getKey()).collect(Collectors.toList());
 	}
 
 	@Override
