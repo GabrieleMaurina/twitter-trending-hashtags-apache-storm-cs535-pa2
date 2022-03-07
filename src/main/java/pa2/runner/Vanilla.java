@@ -2,6 +2,7 @@ package pa2.runner;
 
 import pa2.counter.ICounter;
 import pa2.twitter.Twitter;
+import pa2.util.Log;
 import pa2.util.Time;
 
 public abstract class Vanilla extends Runner {
@@ -14,7 +15,7 @@ public abstract class Vanilla extends Runner {
 		twitter.start();
 		while (true) {
 			Time.sleep(DELAY);
-			logTopHashtags(counter.getTop());
+			Log.logTopHashtags(counter.getTop());
 			counter.reset();
 		}
 	}
