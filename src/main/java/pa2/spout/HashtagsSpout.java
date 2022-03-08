@@ -1,6 +1,12 @@
 package pa2.spout;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.storm.spout.SpoutOutputCollector;
@@ -8,6 +14,7 @@ import org.apache.storm.task.TopologyContext;
 import org.apache.storm.topology.IRichSpout;
 import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.tuple.Fields;
+import org.javatuples.Pair;
 
 import pa2.twitter.Twitter;
 
@@ -28,6 +35,11 @@ public class HashtagsSpout implements IRichSpout {
 	}
 
 	private void onHashtag(String hashtag) {
+		try {
+			Files.write(Paths.get("/s/chopin/a/grad/gmaurina/tmp.txt"), hashtag.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		if (active) {
 			collector.emit(Collections.singletonList(hashtag));
 		}

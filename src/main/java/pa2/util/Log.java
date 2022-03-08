@@ -10,7 +10,9 @@ import java.util.List;
 import org.javatuples.Pair;
 
 public class Log {
-	private static final String HASHTAGS_LOG_FILE = "hashtags_log.txt";
+
+	//private static final String HASHTAGS_LOG_FILE = "hashtags_log.txt";
+	private static final String HASHTAGS_LOG_FILE = "/s/chopin/a/grad/gmaurina/hashtags_log.txt";
 
 	public static void logTopHashtags(List<Pair<String, Integer>> hashtags) {
 		hashtags.add(0, new Pair<String, Integer>(String.valueOf(System.currentTimeMillis()), 0));
