@@ -11,7 +11,6 @@ public abstract class Storm extends Runner {
 
 	TopologyBuilder topologyBuilder;
 	Config conf;
-	String topologyName;
 
 	protected Storm() {
 		topologyBuilder = new TopologyBuilder();

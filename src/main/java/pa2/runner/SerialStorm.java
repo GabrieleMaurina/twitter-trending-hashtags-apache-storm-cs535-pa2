@@ -8,8 +8,8 @@ public abstract class SerialStorm extends Storm {
 
 	protected SerialStorm() {
 		topologyBuilder.setSpout("hashtags", new HashtagsSpout(), 1);
-		topologyBuilder.setBolt("counter", getCounterBolt(), 1).allGrouping("hashtags");
-		topologyBuilder.setBolt("logger", new LoggerBolt(), 1).allGrouping("counter");
+		topologyBuilder.setBolt("counter", getCounterBolt(), 1).globalGrouping("hashtags");
+		topologyBuilder.setBolt("logger", new LoggerBolt(), 1).globalGrouping("counter");
 	}
 	
 	protected abstract CounterBolt getCounterBolt();

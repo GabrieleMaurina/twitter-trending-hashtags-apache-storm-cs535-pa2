@@ -36,6 +36,7 @@
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
+					<appendAssemblyId>false</appendAssemblyId>
 					<archive>
 						<manifest>
 							<mainClass>pa2.runner.LosslessVanilla</mainClass>

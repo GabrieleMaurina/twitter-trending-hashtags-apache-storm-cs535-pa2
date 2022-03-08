@@ -9,7 +9,7 @@ import org.javatuples.Pair;
 
 public class LossyCounter implements ICounter {
 
-	private static final int W = 100;
+	public static final int W = 100;
 
 	private int n;
 	private Map<String, Pair<Integer, Integer>> d;

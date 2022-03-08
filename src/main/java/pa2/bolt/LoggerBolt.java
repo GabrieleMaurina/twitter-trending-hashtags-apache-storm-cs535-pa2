@@ -1,5 +1,6 @@
 package pa2.bolt;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.storm.task.OutputCollector;
@@ -7,6 +8,9 @@ import org.apache.storm.task.TopologyContext;
 import org.apache.storm.topology.IRichBolt;
 import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.tuple.Tuple;
+import org.javatuples.Pair;
+
+import pa2.util.Log;
 
 public class LoggerBolt implements IRichBolt {
 
@@ -16,9 +20,10 @@ public class LoggerBolt implements IRichBolt {
 	public void prepare(Map<String, Object> topoConf, TopologyContext context, OutputCollector collector) {
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void execute(Tuple input) {
-		input.getValues();
+		Log.logTopHashtags((List<Pair<String, Integer>>) input.getValue(0));
 	}
 
 	@Override
