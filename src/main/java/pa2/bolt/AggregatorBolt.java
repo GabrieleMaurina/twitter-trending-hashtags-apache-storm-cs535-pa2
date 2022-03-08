@@ -2,6 +2,7 @@ package pa2.bolt;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;
@@ -38,16 +39,16 @@ public class AggregatorBolt implements IRichBolt {
 	@Override
 	public synchronized void execute(Tuple input) {
 		List<Pair<String, Integer>> values = (List<Pair<String, Integer>>) input.getValue(0);
-		if(counts == null) {
+		if (counts == null) {
 			counts = values;
 			count = 1;
-		}
-		else {
+		} else {
 			counts.addAll(values);
 			count++;
 		}
-		if(count >= counters) {
-			collector.emit(new Values(counts.stream().sorted((v1, v2) -> v2.getValue0().compareTo(v1.getValue0())).limit(LossyCounter.W).toList()));
+		if (count >= counters) {
+			collector.emit(new Values(counts.stream().sorted((v1, v2) -> v2.getValue0().compareTo(v1.getValue0()))
+					.limit(LossyCounter.W).collect(Collectors.toList())));
 			count = 0;
 			counts = null;
 		}

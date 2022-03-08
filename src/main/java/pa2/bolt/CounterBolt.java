@@ -45,6 +45,7 @@ public abstract class CounterBolt implements IRichBolt {
 		} else if (time - last >= delay) {
 			last = time;
 			collector.emit(new Values(counter.getTop()));
+			counter.reset();
 		}
 	}
 
