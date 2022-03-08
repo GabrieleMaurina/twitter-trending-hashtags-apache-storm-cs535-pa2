@@ -6,19 +6,28 @@ import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;
 import org.apache.storm.topology.IRichBolt;
 import org.apache.storm.topology.OutputFieldsDeclarer;
+import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Tuple;
 
-public class LoggerBolt implements IRichBolt {
+import pa2.counter.ICounter;
 
-	private static final long serialVersionUID = 4955543359568328420L;
+public abstract class CounterBolt implements IRichBolt {
+
+	private static final long serialVersionUID = 5421803323160213121L;
+
+	protected ICounter counter;
+	protected TopologyContext context;
+	protected OutputCollector collector;
 
 	@Override
 	public void prepare(Map<String, Object> topoConf, TopologyContext context, OutputCollector collector) {
+		this.context = context;
+		this.collector = collector;
 	}
 
 	@Override
 	public void execute(Tuple input) {
-		input.getValues();
+		System.out.println(input);
 	}
 
 	@Override
@@ -27,10 +36,12 @@ public class LoggerBolt implements IRichBolt {
 
 	@Override
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
+		declarer.declare(new Fields("counts"));
 	}
 
 	@Override
 	public Map<String, Object> getComponentConfiguration() {
 		return null;
 	}
+
 }

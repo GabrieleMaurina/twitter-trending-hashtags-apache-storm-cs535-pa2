@@ -5,15 +5,15 @@ import java.util.Map;
 import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;
 
-import pa2.counter.LosslessCounter;
+import pa2.counter.LossyCounter;
 
-public class LosslessBolt extends CounterBolt {
+public class LossyBolt extends CounterBolt {
 
-	private static final long serialVersionUID = 981042445038703906L;
-	
+	private static final long serialVersionUID = 6484523633235299460L;
+
 	@Override
 	public void prepare(Map<String, Object> topoConf, TopologyContext context, OutputCollector collector) {
 		super.prepare(topoConf, context, collector);
-		counter = new LosslessCounter();
+		counter = new LossyCounter();
 	}
 }

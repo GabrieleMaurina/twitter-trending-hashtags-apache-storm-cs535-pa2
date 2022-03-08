@@ -2,7 +2,7 @@ package pa2.counter;
 
 import java.util.List;
 
-import org.javatuples.Triplet;
+import org.javatuples.Pair;
 
 public interface ICounter {
 	
@@ -10,7 +10,7 @@ public interface ICounter {
 
 	public void push(String s);
 
-	public List<String> getTop();
+	public List<Pair<String, Integer>> getTop();
 
 	public void reset();
 }

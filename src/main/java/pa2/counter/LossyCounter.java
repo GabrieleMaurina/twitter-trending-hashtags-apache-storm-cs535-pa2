@@ -46,9 +46,10 @@ public class LossyCounter implements ICounter {
 	}
 
 	@Override
-	public List<String> getTop() {
+	public List<Pair<String, Integer>> getTop() {
 		return d.entrySet().stream().sorted((e1, e2) -> e2.getValue().getValue0().compareTo(e1.getValue().getValue0()))
-				.limit(SIZE).map(e -> e.getKey()).collect(Collectors.toList());
+				.limit(SIZE).map(e -> new Pair<String, Integer>(e.getKey(), e.getValue().getValue0()))
+				.collect(Collectors.toList());
 	}
 
 	@Override

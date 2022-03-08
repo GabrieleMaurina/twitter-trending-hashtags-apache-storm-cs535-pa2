@@ -56,14 +56,10 @@ public class HashtagsSpout implements IRichSpout {
 
 	@Override
 	public void ack(Object msgId) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void fail(Object msgId) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -73,7 +69,6 @@ public class HashtagsSpout implements IRichSpout {
 
 	@Override
 	public Map<String, Object> getComponentConfiguration() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

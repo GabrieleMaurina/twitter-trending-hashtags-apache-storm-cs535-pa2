@@ -9,4 +9,8 @@ public class LosslessVanilla extends Vanilla {
 		counter = new LosslessCounter();
 		twitter = new Twitter(counter::push);
 	}
+
+	public static void main(String[] args) {
+		new LosslessVanilla().run();
+	}
 }

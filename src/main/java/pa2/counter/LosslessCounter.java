@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.javatuples.Pair;
+
 public class LosslessCounter implements ICounter {
 
 	private Map<String, Integer> count;
@@ -19,9 +21,9 @@ public class LosslessCounter implements ICounter {
 	}
 
 	@Override
-	public List<String> getTop() {
+	public List<Pair<String, Integer>> getTop() {
 		return count.entrySet().stream().sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue())).limit(SIZE)
-				.map(e -> e.getKey()).collect(Collectors.toList());
+				.map(e -> new Pair<String, Integer>(e.getKey(), e.getValue())).collect(Collectors.toList());
 	}
 
 	@Override
