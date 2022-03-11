@@ -41,10 +41,10 @@ def ssh_cmd(node, cmd):
     return f'ssh {node} "{cmd}"'
 
 def main():
-    for node, file in reversed(NODES):
+    for node, file in NODES:
         print('killing', node)
         system(ssh_cmd(node, KILLALL))
-    for node, file in reversed(NODES):
+    for node, file in NODES:
         print('starting', node)
         system(ssh_cmd(node, start_command(file)))
 
